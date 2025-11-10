@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manga Grove 漫画阁 - 技术支援</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f7;
+        }
+        
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #764ba2;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .feature-card p {
+            color: #555;
+            font-size: 0.95em;
+        }
+        
+        .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        ul li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background: #ffeaa7;
+            padding: 20px;
+            border-left: 4px solid #fdcb6e;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .download-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .faq-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .faq-item strong {
+            color: #667eea;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 50px;
+        }
+        
+        code {
+            background: #f1f3f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9em;
+        }
+        
+        .email-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .email-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .bottom-spacer {
+            height: 200px;
+            min-height: 200px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .email-button {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Manga Grove 漫画阁</h1>
+            <p>本地漫画阅读器</p>
+        </header>
+
+        <div class="section">
+            <h2>功能特性</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">📱</div>
+                    <h4>多平台支持</h4>
+                    <p>支持 iOS、iPadOS、macOS 平台。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📡</div>
+                    <h4>WiFi传书</h4>
+                    <p>通过本地网络传输文件，无需数据线。在浏览器中上传 ZIP 文件或图片文件夹。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📚</div>
+                    <h4>书籍管理</h4>
+                    <p>支持标签分类管理、阅读进度追踪。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📖</div>
+                    <h4>阅读功能</h4>
+                    <p>支持图片缩放、翻页导航，自动保存阅读进度。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔍</div>
+                    <h4>搜索筛选</h4>
+                    <p>支持按标签筛选，快速定位目标书籍。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💾</div>
+                    <h4>本地存储</h4>
+                    <p>所有数据保存在设备本地。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📖 快速开始</h2>
+            
+            <h3>1️⃣ 使用WiFi传书（最推荐）</h3>
+            <ol>
+                <li>在应用中打开：<strong>设置 → WiFi传书</strong></li>
+                <li>点击 <strong>"开启WiFi传书"</strong></li>
+                <li>在电脑浏览器中输入显示的地址（如：<code>http://192.168.1.100:8080</code>）</li>
+                <li>在网页中选择或拖拽漫画文件上传</li>
+                <li>上传完成后，文件会自动导入到书架</li>
+            </ol>
+
+            <div class="highlight">
+                <strong>💡 提示</strong><br>
+                手机和电脑必须连接到同一个WiFi网络。如果连接失败，请检查防火墙设置。
+            </div>
+
+            <h3>2️⃣ 通过文件选择器导入</h3>
+            <ul>
+                <li><strong>iOS/iPadOS/macOS</strong>：点击书架右上角"添加"按钮 → 选择"添加书籍"或"批量添加书籍"</li>
+            </ul>
+
+            <h3>3️⃣ 开始阅读</h3>
+            <ul>
+                <li>点击书架上的漫画封面即可开始阅读</li>
+                <li>应用会自动跳转到上次阅读位置</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>❓ 常见问题</h2>
+            
+            <div class="faq-item">
+                <strong>Q: 支持哪些文件格式？</strong>
+                A: 支持ZIP以及包含图片的文件夹。
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: WiFi传书连接不上怎么办？</strong>
+                A: 1) 确保手机和电脑连接到同一WiFi；2) 检查防火墙是否阻止；3) 尝试重启WiFi传书服务。
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: 阅读进度会自动保存吗？</strong>
+                A: 是的，每次翻页和退出阅读器时，应用都会自动保存当前页码。下次打开会直接跳转到上次阅读位置。
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: 如何批量导入书籍？</strong>
+                A: 在书架界面点击"添加"按钮，选择"批量添加书籍"，然后选择包含多个漫画文件的文件夹即可。
+            </div>
+
+            <div class="faq-item">
+                <strong>Q: 支持哪些图片格式？</strong>
+                A: 支持常见的图片格式，包括 JPEG、PNG、WebP 等。可以将图片打包成 ZIP 文件或直接导入包含图片的文件夹。
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>使用技巧</h2>
+            
+            <h3>文件导入</h3>
+            <ul>
+                <li><strong>WiFi传书</strong>：通过浏览器上传文件，适合从电脑传输到移动设备</li>
+                <li><strong>批量导入</strong>：选择包含多个漫画文件的文件夹，一次性导入</li>
+                <li><strong>文件命名</strong>：使用清晰的文件名有助于自动识别系列和卷号</li>
+            </ul>
+
+            <h3>书籍管理</h3>
+            <ul>
+                <li><strong>标签分类</strong>：为书籍添加标签，便于后续筛选和查找</li>
+                <li><strong>阅读进度</strong>：应用会自动记录阅读位置，下次打开时继续阅读</li>
+            </ul>
+        </div>
+
+        <div class="download-section">
+            <h2>📱 下载应用</h2>
+            <p style="margin-bottom: 30px;">在 App Store 上下载 Manga Grove</p>
+            <a href="https://apps.apple.com/app/manga-grove/id123456789" class="btn">App Store 下载</a>
+        </div>
+
+        <div class="section">
+            <h2>📞 技术支援</h2>
+            <p style="text-align: center; margin: 40px 0;">如果你在使用过程中遇到任何问题或有功能建议，欢迎发送邮件至：</p>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <a href="mailto:ankefeedback@gmail.com" class="email-button">
+                    📧 ankefeedback@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Manga Grove 漫画阁</strong></p>
+            <p>© 2025 Manga Grove Team. All rights reserved.</p>
+            <p style="margin-top: 20px;">
+                <a href="mailto:ankefeedback@gmail.com" style="color: #667eea; text-decoration: none;">联系我们：ankefeedback@gmail.com</a>
+            </p>
+            <p style="margin-top: 20px; color: #999; font-size: 0.9em;">
+                最后更新：2025年11月 · 版本：1.0
+            </p>
+        </footer>
+        
+        <div class="bottom-spacer"></div>
+    </div>
+</body>
+</html>
+
